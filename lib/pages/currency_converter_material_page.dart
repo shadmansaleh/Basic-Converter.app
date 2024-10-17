@@ -6,6 +6,12 @@ class _CurrencyConverterMaterialPageState
   final TextEditingController inputBoxController = TextEditingController();
 
   @override
+  void dispose() {
+    inputBoxController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     void onSubmitHandler() {
       setState(() {
@@ -37,7 +43,7 @@ class _CurrencyConverterMaterialPageState
                   Padding(
                     padding: const EdgeInsets.only(left: 32.0),
                     child: Text(
-                      result.toString(),
+                      result != 0 ? result.toStringAsFixed(2) : '0',
                       style: const TextStyle(
                           fontSize: 80,
                           fontWeight: FontWeight.w200,
